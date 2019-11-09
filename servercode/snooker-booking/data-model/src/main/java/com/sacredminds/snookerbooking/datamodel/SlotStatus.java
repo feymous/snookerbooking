@@ -20,7 +20,7 @@ public class SlotStatus {
 	@Column
 	private long slotStatusId;
 
-	private String statuscode;
+	private String statusCode;
 	
 	@OneToMany(mappedBy="slotStatus")
 	private List<Slot> slots;

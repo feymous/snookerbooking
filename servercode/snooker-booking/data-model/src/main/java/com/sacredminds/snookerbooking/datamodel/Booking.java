@@ -10,10 +10,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class Booking extends DateAudit {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6632281216267666289L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
