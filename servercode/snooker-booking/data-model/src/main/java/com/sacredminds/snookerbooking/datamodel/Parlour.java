@@ -25,12 +25,16 @@ public class Parlour {
 	private long parlourId;
 
 	private String parlourName;
+	
+	private String mailId;
+	
+	private String phoneNo;
 
 	private String description;
 
 	@OneToOne
-	@JoinColumn
-	private Location locationId;
+	@JoinColumn(name = "location")
+	private Location location;
 
 	// bi-directional many-to-one association to Application
 	@OneToMany(mappedBy = "parlour")
@@ -39,7 +43,7 @@ public class Parlour {
 
 	// bi-directional many-to-one association to Application
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(name = "owner")
 	private ParlourOwner owner;
 
 }

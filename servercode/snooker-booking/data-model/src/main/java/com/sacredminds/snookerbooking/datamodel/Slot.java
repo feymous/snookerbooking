@@ -33,7 +33,7 @@ public class Slot {
 	private Board board;
 
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "slot_status")
 	private SlotStatus slotStatus;
 
 	@OneToOne(mappedBy = "slot")

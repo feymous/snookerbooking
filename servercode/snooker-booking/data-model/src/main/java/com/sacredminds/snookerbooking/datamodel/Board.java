@@ -23,12 +23,12 @@ public class Board {
 
 	// bi-directional many-to-one association to Status
 	@ManyToOne
-	@JoinColumn
-	private BoardType boardTypeId;
+	@JoinColumn(name= "board_type")
+	private BoardType boardType;
 
 	// bi-directional many-to-one association to Status
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "parlour")
 	private Parlour parlour;
 
 	private int pricePerHour;

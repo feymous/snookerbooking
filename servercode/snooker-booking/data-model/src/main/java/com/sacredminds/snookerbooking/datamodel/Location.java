@@ -24,7 +24,7 @@ public class Location {
 	private String addressLine2;
 
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(name = "city")
 	private City city;
 
 	private int pincode;

@@ -16,5 +16,6 @@
 		<module>parlour-service</module>
 		<module>data-model</module>
 		<module>logging-service</module>
+		<module>list-of-values</module>
 	</modules>
 </project>

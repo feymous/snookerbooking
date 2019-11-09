@@ -1,4 +1,4 @@
-package com.sacredminds.snookerbooking.parlourservice;
+package com.sacredminds.snookerbooking.listofvalues;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,9 +13,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAutoConfiguration
 @EntityScan(basePackages = "com.sacredminds.snookerbooking.*")
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-public class ParlourServiceApplication {
+public class ListOfValuesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ParlourServiceApplication.class, args);
+		SpringApplication.run(ListOfValuesApplication.class, args);
 	}
 }

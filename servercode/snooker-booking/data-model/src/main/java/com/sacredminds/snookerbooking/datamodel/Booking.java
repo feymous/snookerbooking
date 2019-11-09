@@ -22,12 +22,12 @@ public class Booking extends DateAudit {
 
 	// bi-directional many-to-one association to Requisition
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name = "player")
 	private Player player;
 
 	// bi-directional many-to-one association to Requisition
 	@OneToOne
-	@JoinColumn
+	@JoinColumn(name = "slot")
 	private Slot slot;
 
 }
