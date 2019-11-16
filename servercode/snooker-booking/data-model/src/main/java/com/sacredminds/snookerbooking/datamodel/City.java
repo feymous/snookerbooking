@@ -21,8 +21,8 @@ public class City {
 	private Long cityId;
 
 	private String cityName;
-	
-	@OneToOne(mappedBy="city")
+
+	@OneToOne(mappedBy = "city")
 	@JsonIgnore
 	private Location location;
 

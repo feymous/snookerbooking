@@ -1,6 +1,6 @@
 INSERT INTO `snooker_booking`.`city` (`city_id`, `city_name`) VALUES ('1', 'Hyderabad');
 INSERT INTO `snooker_booking`.`city` (`city_id`, `city_name`) VALUES ('2', 'Chennai');
-INSERT INTO `snooker_booking`.`city` (`city_id`, `city_name`) VALUES ('3', 'Hyderabad');
+INSERT INTO `snooker_booking`.`city` (`city_id`, `city_name`) VALUES ('3', 'Bengaluru');
 
 
 INSERT INTO `snooker_booking`.`slot_status` (`slot_status_id`, `status_code`) VALUES ('1', 'UNAVAILABLE');

@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-11-09T12:41:40.477Z[GMT]")
-public class Cities extends ArrayList<City>  {
+public class Cities extends ArrayList<CityVO>  {
 
   @Override
   public boolean equals(java.lang.Object o) {
