@@ -36,12 +36,12 @@ public class Parlour {
 	@JoinColumn(name = "location")
 	private Location location;
 
-	// bi-directional many-to-one association to Application
+	// bi-directional many-to-one association to Parlour
 	@OneToMany(mappedBy = "parlour")
 	@JsonIgnore
 	private List<Board> boards;
 
-	// bi-directional many-to-one association to Application
+	// bi-directional many-to-one association to Parlour
 	@OneToOne
 	@JoinColumn(name = "owner")
 	private ParlourOwner owner;

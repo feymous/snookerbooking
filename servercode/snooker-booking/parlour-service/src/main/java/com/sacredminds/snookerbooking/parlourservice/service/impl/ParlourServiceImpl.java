@@ -63,10 +63,10 @@ public class ParlourServiceImpl implements ParlourService {
 		parlour.setMailId(request.getMailId());
 		parlour.setOwner(addOwner(request.getOwner()));
 		parlour.setLocation(addLocation(request.getLocationRequestVO()));
-
-		parlour.setBoards(addBoards(request.getBoards(), parlour));
+		parlour.setTags(request.getTags().toString());
+		
 		Parlour parlourResponse = parlourRepo.save(parlour);
-
+		parlourResponse.setBoards(addBoards(request.getBoards(), parlour));
 		return modelMapper.map(parlourResponse, ParlourResponseVO.class);
 	}
 
@@ -98,7 +98,7 @@ public class ParlourServiceImpl implements ParlourService {
 			board.setPricePerHour(boardVO.getPricePerHour());
 			boards.add(board);
 		});
-		return boards;
+		return boardRepo.saveAll(boards);
 	}
 
 	@Override
