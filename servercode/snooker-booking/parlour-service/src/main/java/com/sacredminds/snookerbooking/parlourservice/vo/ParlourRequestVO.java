@@ -31,7 +31,7 @@ public class ParlourRequestVO {
 	private String phoneNo = null;
 
 	@JsonProperty("location")
-	private LocationVO location = null;
+	private LocationRequestVO location = null;
 
 	@JsonProperty("owner")
 	private OwnerVO owner = null;
@@ -124,7 +124,7 @@ public class ParlourRequestVO {
 		this.phoneNo = phoneNo;
 	}
 
-	public ParlourRequestVO location(LocationVO location) {
+	public ParlourRequestVO location(LocationRequestVO location) {
 		this.location = location;
 		return this;
 	}
@@ -137,11 +137,11 @@ public class ParlourRequestVO {
 	@ApiModelProperty(value = "")
 
 	@Valid
-	public LocationVO getLocation() {
+	public LocationRequestVO getLocationRequestVO() {
 		return location;
 	}
 
-	public void setLocation(LocationVO location) {
+	public void setLocationRequestVO(LocationRequestVO location) {
 		this.location = location;
 	}
 

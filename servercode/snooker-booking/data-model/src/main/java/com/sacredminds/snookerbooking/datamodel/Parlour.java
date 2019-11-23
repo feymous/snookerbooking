@@ -45,5 +45,7 @@ public class Parlour {
 	@OneToOne
 	@JoinColumn(name = "owner")
 	private ParlourOwner owner;
+	
+	private String tags;
 
 }

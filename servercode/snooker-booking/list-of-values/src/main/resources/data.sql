@@ -29,3 +29,4 @@ INSERT INTO `snooker_booking`.`parlour_owner` (`owner_id`, `email`, `first_name`
 
 INSERT INTO `snooker_booking`.`parlour` (`parlour_id`, `description`, `mail_id`, `parlour_name`, `phone_no`, `location`, `owner`) VALUES ('1', 'Parlour asd auar adsfi ads inr an aaf adf ren adfuqr', 'vignesh.siva@gmail.com', 'Sudo Parlout', '9032849214', '1', '1');
 INSERT INTO `snooker_booking`.`parlour` (`parlour_id`, `description`, `mail_id`, `parlour_name`, `phone_no`, `location`, `owner`) VALUES ('2', 'parlour asdf reww adsf hnl  iah ygy uanna dhu uahd odlis hofrh auhdf 9hrf .', 'parlour@invalidmail.com', 'Lallu Snookers', '9182736450', '2', '2');
+	

@@ -15,8 +15,10 @@ import lombok.Data;
 public class Location {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
+	@GeneratedValue(generator = "LOCATION_ID_GENERATOR")
+	@org.hibernate.annotations.GenericGenerator(name = "LOCATION_ID_GENERATOR", strategy = "sequence", parameters = {
+			@org.hibernate.annotations.Parameter(name = "sequence", value = "seq_Partner") })
 	private long locationId;
 
 	private String addressLine1;

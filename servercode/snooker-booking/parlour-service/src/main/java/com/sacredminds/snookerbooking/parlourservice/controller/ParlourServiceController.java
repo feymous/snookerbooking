@@ -48,9 +48,8 @@ public class ParlourServiceController {
 	@RequestMapping(value = "/", consumes = { "application/json", "application/xml" }, method = RequestMethod.POST)
 	public ResponseEntity<ParlourResponseVO> addParlour(
 			@ApiParam(value = "Creation of Parlour", required = true) @Valid @RequestBody ParlourRequestVO body) {
-		String accept = request.getHeader("Accept");
 		ParlourResponseVO parlourResponseVO = parlourService.addParlour(body);
-		return new ResponseEntity<ParlourResponseVO>(HttpStatus.NOT_IMPLEMENTED);
+		return new ResponseEntity<ParlourResponseVO>(parlourResponseVO, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)

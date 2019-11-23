@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import io.swagger.models.Tag;
 import lombok.Data;
 
 /**
@@ -34,10 +33,13 @@ public class ParlourResponseVO {
 	private List<String> photoUrls = new ArrayList<String>();
 
 	@JsonProperty("location")
-	private LocationVO location = null;
+	private LocationResponseVO location = null;
+
+	@JsonProperty("parlourOwner")
+	private OwnerVO parlourOwner;
 
 	@JsonProperty("tags")
 	@Valid
-	private List<Tag> tags = null;
+	private List<String> tags = null;
 
 }
