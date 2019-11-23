@@ -5,19 +5,20 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.models.Tag;
 
 /**
  * ParlourRequestVO
  */
 @Validated
 public class ParlourRequestVO {
+
 	@JsonProperty("parlourName")
 	private String parlourName = null;
 
@@ -27,6 +28,7 @@ public class ParlourRequestVO {
 	@JsonProperty("mailId")
 	private String mailId = null;
 
+	@NotNull(message = "Parlour Phone number has not been provided")
 	@JsonProperty("phoneNo")
 	private String phoneNo = null;
 
@@ -42,7 +44,7 @@ public class ParlourRequestVO {
 
 	@JsonProperty("tags")
 	@Valid
-	private List<Tag> tags = null;
+	private List<String> tags = null;
 
 	public ParlourRequestVO parlourName(String parlourName) {
 		this.parlourName = parlourName;
@@ -194,14 +196,14 @@ public class ParlourRequestVO {
 		this.boards = boards;
 	}
 
-	public ParlourRequestVO tags(List<Tag> tags) {
+	public ParlourRequestVO tags(List<String> tags) {
 		this.tags = tags;
 		return this;
 	}
 
-	public ParlourRequestVO addTagsItem(Tag tagsItem) {
+	public ParlourRequestVO addTagsItem(String tagsItem) {
 		if (this.tags == null) {
-			this.tags = new ArrayList<Tag>();
+			this.tags = new ArrayList<String>();
 		}
 		this.tags.add(tagsItem);
 		return this;
@@ -214,11 +216,11 @@ public class ParlourRequestVO {
 	 **/
 	@ApiModelProperty(value = "")
 	@Valid
-	public List<Tag> getTags() {
+	public List<String> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<Tag> tags) {
+	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
 

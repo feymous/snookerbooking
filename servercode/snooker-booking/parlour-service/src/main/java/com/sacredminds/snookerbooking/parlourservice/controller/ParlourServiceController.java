@@ -13,9 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,14 +46,14 @@ public class ParlourServiceController {
 		this.request = request;
 	}
 
-	@RequestMapping(value = "/", consumes = { "application/json", "application/xml" }, method = RequestMethod.POST)
+	@PostMapping(value = "/", consumes = { "application/json", "application/xml" })
 	public ResponseEntity<ParlourResponseVO> addParlour(
 			@ApiParam(value = "Creation of Parlour", required = true) @Valid @RequestBody ParlourRequestVO body) {
 		ParlourResponseVO parlourResponseVO = parlourService.addParlour(body);
 		return new ResponseEntity<ParlourResponseVO>(parlourResponseVO, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)
+	@GetMapping(value = "/", produces = { "application/json", "application/xml" })
 	public ResponseEntity<List<ParlourResponseVO>> findParloursByCity(
 			@NotNull @ApiParam(value = "Id of the city which users selects as their location", required = true) @Valid @RequestParam(value = "cityId", required = true) Long cityId) {
 		String accept = request.getHeader("Accept");
@@ -69,7 +70,7 @@ public class ParlourServiceController {
 		return new ResponseEntity<List<ParlourResponseVO>>(HttpStatus.NOT_IMPLEMENTED);
 	}
 
-	@RequestMapping(value = "/tags", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)
+	@GetMapping(value = "/tags", produces = { "application/json", "application/xml" })
 	public ResponseEntity<List<ParlourResponseVO>> findparloursByTags(
 			@NotNull @ApiParam(value = "Tags to filter by", required = true) @Valid @RequestParam(value = "tags", required = true) List<String> tags) {
 		String accept = request.getHeader("Accept");

@@ -10,16 +10,19 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sacredminds.snookerbooking.datamodel.Board;
 import com.sacredminds.snookerbooking.datamodel.Location;
 import com.sacredminds.snookerbooking.datamodel.Parlour;
 import com.sacredminds.snookerbooking.datamodel.ParlourOwner;
 import com.sacredminds.snookerbooking.parlourservice.exceptionhandling.ResourceNotFoundException;
 import com.sacredminds.snookerbooking.parlourservice.repository.BoardRepository;
+import com.sacredminds.snookerbooking.parlourservice.repository.BoardTypeRepository;
 import com.sacredminds.snookerbooking.parlourservice.repository.CityRepository;
 import com.sacredminds.snookerbooking.parlourservice.repository.LocationRepository;
 import com.sacredminds.snookerbooking.parlourservice.repository.ParlourOwnerRepository;
 import com.sacredminds.snookerbooking.parlourservice.repository.ParlourRepository;
 import com.sacredminds.snookerbooking.parlourservice.service.ParlourService;
+import com.sacredminds.snookerbooking.parlourservice.vo.BoardVO;
 import com.sacredminds.snookerbooking.parlourservice.vo.LocationRequestVO;
 import com.sacredminds.snookerbooking.parlourservice.vo.OwnerVO;
 import com.sacredminds.snookerbooking.parlourservice.vo.ParlourRequestVO;
@@ -41,6 +44,9 @@ public class ParlourServiceImpl implements ParlourService {
 	ParlourOwnerRepository parlourOwnerRepo;
 
 	@Autowired
+	BoardTypeRepository boardTypeRepo;
+
+	@Autowired
 	CityRepository cityRepo;
 
 	private static final ModelMapper modelMapper = new ModelMapper();
@@ -58,9 +64,10 @@ public class ParlourServiceImpl implements ParlourService {
 		parlour.setOwner(addOwner(request.getOwner()));
 		parlour.setLocation(addLocation(request.getLocationRequestVO()));
 
-		parlourRepo.save(parlour);
+		parlour.setBoards(addBoards(request.getBoards(), parlour));
+		Parlour parlourResponse = parlourRepo.save(parlour);
 
-		return modelMapper.map(parlour, ParlourResponseVO.class);
+		return modelMapper.map(parlourResponse, ParlourResponseVO.class);
 	}
 
 	private ParlourOwner addOwner(@Valid OwnerVO ownerRequest) {
@@ -77,6 +84,21 @@ public class ParlourServiceImpl implements ParlourService {
 		});
 		return locationRepo.save(location);
 
+	}
+
+	private List<Board> addBoards(@Valid List<BoardVO> boardsVO, Parlour parlour) {
+
+		List<Board> boards = new ArrayList<>();
+		boardsVO.forEach(boardVO -> {
+			Board board = new Board();
+			board.setBoardType(boardTypeRepo.findById(boardVO.getBoardTypeId()).get());
+			board.setDescription(boardVO.getDescription());
+			board.setName(boardVO.getName());
+			board.setParlour(parlour);
+			board.setPricePerHour(boardVO.getPricePerHour());
+			boards.add(board);
+		});
+		return boards;
 	}
 
 	@Override

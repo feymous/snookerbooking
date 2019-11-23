@@ -14,137 +14,140 @@ import javax.validation.constraints.*;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-11-09T09:56:04.132Z[GMT]")
-public class OwnerVO   {
-  @JsonProperty("firstName")
-  private String firstName = null;
+public class OwnerVO {
 
-  @JsonProperty("lastName")
-  private String lastName = null;
+	@JsonProperty("firstName")
+	private String firstName = null;
 
-  @JsonProperty("email")
-  private String email = null;
+	@JsonProperty("lastName")
+	private String lastName = null;
 
-  @JsonProperty("phoneNo")
-  private String phoneNo = null;
+	@JsonProperty("email")
+	private String email = null;
 
-  public OwnerVO firstName(String firstName) {
-    this.firstName = firstName;
-    return this;
-  }
+	@NotNull(message = "Owner Phone number is missing")
+	@JsonProperty("phoneNo")
+	private String phoneNo = null;
 
-  /**
-   * Get firstName
-   * @return firstName
-  **/
-  @ApiModelProperty(value = "")
-  
-    public String getFirstName() {
-    return firstName;
-  }
+	public OwnerVO firstName(String firstName) {
+		this.firstName = firstName;
+		return this;
+	}
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
+	/**
+	 * Get firstName
+	 * 
+	 * @return firstName
+	 **/
+	@ApiModelProperty(value = "")
 
-  public OwnerVO lastName(String lastName) {
-    this.lastName = lastName;
-    return this;
-  }
+	public String getFirstName() {
+		return firstName;
+	}
 
-  /**
-   * Get lastName
-   * @return lastName
-  **/
-  @ApiModelProperty(value = "")
-  
-    public String getLastName() {
-    return lastName;
-  }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
+	public OwnerVO lastName(String lastName) {
+		this.lastName = lastName;
+		return this;
+	}
 
-  public OwnerVO email(String email) {
-    this.email = email;
-    return this;
-  }
+	/**
+	 * Get lastName
+	 * 
+	 * @return lastName
+	 **/
+	@ApiModelProperty(value = "")
 
-  /**
-   * Get email
-   * @return email
-  **/
-  @ApiModelProperty(value = "")
-  
-    public String getEmail() {
-    return email;
-  }
+	public String getLastName() {
+		return lastName;
+	}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-  public OwnerVO phoneNo(String phoneNo) {
-    this.phoneNo = phoneNo;
-    return this;
-  }
+	public OwnerVO email(String email) {
+		this.email = email;
+		return this;
+	}
 
-  /**
-   * Get phoneNo
-   * @return phoneNo
-  **/
-  @ApiModelProperty(value = "")
-  
-    public String getPhoneNo() {
-    return phoneNo;
-  }
+	/**
+	 * Get email
+	 * 
+	 * @return email
+	 **/
+	@ApiModelProperty(value = "")
 
-  public void setPhoneNo(String phoneNo) {
-    this.phoneNo = phoneNo;
-  }
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    OwnerVO ownerVO = (OwnerVO) o;
-    return Objects.equals(this.firstName, ownerVO.firstName) &&
-        Objects.equals(this.lastName, ownerVO.lastName) &&
-        Objects.equals(this.email, ownerVO.email) &&
-        Objects.equals(this.phoneNo, ownerVO.phoneNo);
-  }
+	public OwnerVO phoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+		return this;
+	}
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(firstName, lastName, email, phoneNo);
-  }
+	/**
+	 * Get phoneNo
+	 * 
+	 * @return phoneNo
+	 **/
+	@ApiModelProperty(value = "")
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class OwnerVO {\n");
-    
-    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    phoneNo: ").append(toIndentedString(phoneNo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
+	public String getPhoneNo() {
+		return phoneNo;
+	}
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		OwnerVO ownerVO = (OwnerVO) o;
+		return Objects.equals(this.firstName, ownerVO.firstName) && Objects.equals(this.lastName, ownerVO.lastName)
+				&& Objects.equals(this.email, ownerVO.email) && Objects.equals(this.phoneNo, ownerVO.phoneNo);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, email, phoneNo);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("class OwnerVO {\n");
+
+		sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+		sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+		sb.append("    email: ").append(toIndentedString(email)).append("\n");
+		sb.append("    phoneNo: ").append(toIndentedString(phoneNo)).append("\n");
+		sb.append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+		return o.toString().replace("\n", "\n    ");
+	}
 }

@@ -19,18 +19,20 @@ public class Board {
 	@Column
 	private long boardId;
 
-	private String boardName;
+	private String name;
+
+	private String description;
+	
+	private int pricePerHour;
 
 	// bi-directional many-to-one association to Status
 	@ManyToOne
-	@JoinColumn(name= "board_type")
+	@JoinColumn(name = "board_type")
 	private BoardType boardType;
 
 	// bi-directional many-to-one association to Status
 	@ManyToOne
 	@JoinColumn(name = "parlour")
 	private Parlour parlour;
-
-	private int pricePerHour;
 
 }

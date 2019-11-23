@@ -34,6 +34,9 @@ public class ParlourResponseVO {
 
 	@JsonProperty("location")
 	private LocationResponseVO location = null;
+	
+	@JsonProperty("baords")
+	private List<BoardVO> boards;
 
 	@JsonProperty("parlourOwner")
 	private OwnerVO parlourOwner;

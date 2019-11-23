@@ -11,7 +11,7 @@
 	<artifactId>parlour-service</artifactId>
 	<description>To manage parlour related API's</description>
 	<properties>
-		<java.version>11</java.version>"src/main/resources/application.properties"
+		<java.version>11</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<springfox-version>2.9.2</springfox-version>

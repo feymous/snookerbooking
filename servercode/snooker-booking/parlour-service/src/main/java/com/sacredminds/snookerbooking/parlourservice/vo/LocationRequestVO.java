@@ -17,8 +17,6 @@ import io.swagger.annotations.ApiModelProperty;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-11-09T09:56:04.132Z[GMT]")
 public class LocationRequestVO {
-	@JsonProperty("locationId")
-	private Long locationId = null;
 
 	@JsonProperty("addressLine1")
 	private String addressLine1 = null;
@@ -35,24 +33,6 @@ public class LocationRequestVO {
 	@JsonProperty("gps")
 	private GPS gps = null;
 
-	public LocationRequestVO locationId(Long locationId) {
-		this.locationId = locationId;
-		return this;
-	}
-
-	/**
-	 * Get locationId
-	 * 
-	 * @return locationId
-	 **/
-	@ApiModelProperty(required = true, value = "")
-	public Long getLocationId() {
-		return locationId;
-	}
-
-	public void setLocationId(Long locationId) {
-		this.locationId = locationId;
-	}
 
 	public LocationRequestVO addressLine1(String addressLine1) {
 		this.addressLine1 = addressLine1;
@@ -166,16 +146,16 @@ public class LocationRequestVO {
 			return false;
 		}
 		LocationRequestVO LocationRequestVO = (LocationRequestVO) o;
-		return Objects.equals(this.locationId, LocationRequestVO.locationId)
-				&& Objects.equals(this.addressLine1, LocationRequestVO.addressLine1)
+		return Objects.equals(this.addressLine1, LocationRequestVO.addressLine1)
 				&& Objects.equals(this.addressLine2, LocationRequestVO.addressLine2)
-				&& Objects.equals(this.city, LocationRequestVO.city) && Objects.equals(this.state, LocationRequestVO.state)
+				&& Objects.equals(this.city, LocationRequestVO.city)
+				&& Objects.equals(this.state, LocationRequestVO.state)
 				&& Objects.equals(this.gps, LocationRequestVO.gps);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(locationId, addressLine1, addressLine2, city, state, gps);
+		return Objects.hash(addressLine1, addressLine2, city, state, gps);
 	}
 
 	@Override
@@ -183,7 +163,6 @@ public class LocationRequestVO {
 		StringBuilder sb = new StringBuilder();
 		sb.append("class LocationRequestVO {\n");
 
-		sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
 		sb.append("    addressLine1: ").append(toIndentedString(addressLine1)).append("\n");
 		sb.append("    addressLine2: ").append(toIndentedString(addressLine2)).append("\n");
 		sb.append("    city: ").append(toIndentedString(city)).append("\n");
