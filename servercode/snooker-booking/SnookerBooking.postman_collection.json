@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "afb98341-daeb-465c-8950-1929deae3182",
+		"name": "SnookerBooking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Parlour",
+			"item": [
+				{
+					"name": "Fetch By City",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:9000/api/parlour/?cityId=1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"parlour",
+								""
+							],
+							"query": [
+								{
+									"key": "cityId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Parlour",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"parlourName\": \"Frames Parlour,Snooker Den\",\r\n  \"description\": \"Parlour description\",\r\n  \"mailId\": \"vignesh.n.s@ga,\",\r\n  \"phoneNo\": \"9087651342\",\r\n  \"location\": {\r\n    \"addressLine1\": \"string\",\r\n    \"addressLine2\": \"string\",\r\n    \"city\": 1,\r\n    \"state\": \"string\",\r\n    \"gps\": {\r\n      \"latitude\": 0,\r\n      \"longitude\": 0\r\n    }\r\n  },\r\n  \"owner\": {\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"email\": \"string\",\r\n    \"phoneNo\": \"1234567892\"\r\n  },\r\n  \"boards\": [\r\n    {\r\n      \"boardTypeId\": 1,\r\n      \"pricePerHour\": 100,\r\n      \"name\": \"Board1,Board2\",\r\n      \"description\": \"Description about the board\",\r\n      \"photoUrls\": [\r\n        \"string\"\r\n      ]\r\n    }\r\n  ],\r\n  \"tags\": [ \"English\"  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/parlour/",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"parlour",
+								""
+							]
+						},
+						"description": "localhost:9000/api/parlour/"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "LOV's",
+			"item": [
+				{
+					"name": "Fecth Cities",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:9001/api/lovs/city",
+							"host": [
+								"localhost"
+							],
+							"port": "9001",
+							"path": [
+								"api",
+								"lovs",
+								"city"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
