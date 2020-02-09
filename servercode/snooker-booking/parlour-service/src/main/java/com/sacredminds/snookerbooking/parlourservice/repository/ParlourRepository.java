@@ -15,5 +15,8 @@ public interface ParlourRepository extends JpaRepository<Parlour, Long> {
 
 	@Query("SELECT p FROM Parlour p INNER JOIN p.location l WHERE l.city= :city")
 	List<Parlour> findByCity(@Param("city") City city);
+	
+	@Query("SELECT count(*) FROM Parlour p GROUP BY p.location.city.cityId")
+	List<Long> countByCity();
 
 }

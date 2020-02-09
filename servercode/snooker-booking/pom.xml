@@ -18,6 +18,7 @@
 		<module>logging-service</module>
 		<module>list-of-values</module>
 		<module>player-service</module>
+		<module>board-service</module>
 	</modules>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->

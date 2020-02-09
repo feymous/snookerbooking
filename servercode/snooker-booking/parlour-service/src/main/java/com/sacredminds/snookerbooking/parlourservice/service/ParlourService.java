@@ -14,4 +14,6 @@ public interface ParlourService {
 
 	List<ParlourResponseVO> findParlourByCity(@NotNull @Valid Long cityId);
 
+	List<Long> findParlourCountByCity();
+
 }

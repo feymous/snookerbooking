@@ -21,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sacredminds.snookerbooking.parlourservice.repository.BoardRepository;
 import com.sacredminds.snookerbooking.parlourservice.service.ParlourService;
+import com.sacredminds.snookerbooking.parlourservice.vo.BoardResponse;
 import com.sacredminds.snookerbooking.parlourservice.vo.ParlourRequestVO;
 import com.sacredminds.snookerbooking.parlourservice.vo.ParlourResponseVO;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
@@ -41,11 +44,15 @@ public class ParlourServiceController {
 	ParlourService parlourService;
 
 	@Autowired
+	BoardRepository boardRepository;
+
+	@Autowired
 	public ParlourServiceController(ObjectMapper objectMapper, HttpServletRequest request) {
 		this.objectMapper = objectMapper;
 		this.request = request;
 	}
 
+	@ApiOperation(value = "/")
 	@PostMapping(value = "/", consumes = { "application/json", "application/xml" })
 	public ResponseEntity<ParlourResponseVO> addParlour(
 			@ApiParam(value = "Creation of Parlour", required = true) @Valid @RequestBody ParlourRequestVO body) {
@@ -53,6 +60,19 @@ public class ParlourServiceController {
 		return new ResponseEntity<ParlourResponseVO>(parlourResponseVO, HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "/count")
+	@GetMapping(value = "/count", produces = { "application/json", "application/xml" })
+	public ResponseEntity<List<Long>> findParlourCountByCity() {
+		return new ResponseEntity<>(parlourService.findParlourCountByCity(), HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "/bycity")
+	@GetMapping(value = "/bycity", produces = { "application/json", "application/xml" })
+	public ResponseEntity<List<BoardResponse>> getBoardResponse() {
+		return new ResponseEntity<>(boardRepository.getListByCity(), HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "/")
 	@GetMapping(value = "/", produces = { "application/json", "application/xml" })
 	public ResponseEntity<List<ParlourResponseVO>> findParloursByCity(
 			@NotNull @ApiParam(value = "Id of the city which users selects as their location", required = true) @Valid @RequestParam(value = "cityId", required = true) Long cityId) {
@@ -87,4 +107,5 @@ public class ParlourServiceController {
 
 		return new ResponseEntity<List<ParlourResponseVO>>(HttpStatus.NOT_IMPLEMENTED);
 	}
+
 }

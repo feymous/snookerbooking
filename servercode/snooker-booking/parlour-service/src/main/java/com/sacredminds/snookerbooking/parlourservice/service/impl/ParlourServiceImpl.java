@@ -60,11 +60,11 @@ public class ParlourServiceImpl implements ParlourService {
 		parlour.setDescription(request.getDescription());
 		parlour.setParlourName(request.getParlourName());
 		parlour.setPhoneNo(request.getPhoneNo());
-		parlour.setMailId(request.getMailId());
+		parlour.setEmail(request.getMailId());
 		parlour.setOwner(addOwner(request.getOwner()));
 		parlour.setLocation(addLocation(request.getLocationRequestVO()));
 		parlour.setTags(request.getTags().toString());
-		
+
 		Parlour parlourResponse = parlourRepo.save(parlour);
 		parlourResponse.setBoards(addBoards(request.getBoards(), parlour));
 		return modelMapper.map(parlourResponse, ParlourResponseVO.class);
@@ -105,6 +105,7 @@ public class ParlourServiceImpl implements ParlourService {
 	public List<ParlourResponseVO> findParlourByCity(@NotNull @Valid Long cityId) {
 
 		List<ParlourResponseVO> parlourResponseVO = new ArrayList<>();
+
 		cityRepo.findById(cityId).ifPresentOrElse(city -> {
 			parlourRepo.findByCity(city).forEach(parlour -> {
 				parlourResponseVO.add(modelMapper.map(parlour, ParlourResponseVO.class));
@@ -114,6 +115,11 @@ public class ParlourServiceImpl implements ParlourService {
 			throw new ResourceNotFoundException(" No Cities found with provided CityID " + cityId);
 		});
 		return parlourResponseVO;
+	}
+
+	@Override
+	public List<Long> findParlourCountByCity() {
+		return boardRepo.countByCity();
 	}
 
 }

@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,8 +26,16 @@ public class Booking extends DateAudit {
 	private static final long serialVersionUID = 6632281216267666289L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
+	@GeneratedValue(generator = "booking-sequence-generator")
+    @GenericGenerator(
+      name = "booking-sequence-generator",
+      strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+      parameters = {
+        @Parameter(name = "sequence_name", value = "booking_sequence"),
+        @Parameter(name = "initial_value", value = "1"),
+        @Parameter(name = "increment_size", value = "1")
+        }
+    )
 	private long bookingId;
 
 	// bi-directional many-to-one association to Requisition
