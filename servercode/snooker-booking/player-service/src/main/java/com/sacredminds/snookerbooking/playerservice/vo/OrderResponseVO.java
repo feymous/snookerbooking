@@ -1,5 +1,6 @@
 package com.sacredminds.snookerbooking.playerservice.vo;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * PlayerRequestVO
+ * OrderResponseVO
  */
 @Validated
 @Data
@@ -34,11 +35,11 @@ public class OrderResponseVO {
 	@JsonProperty("shipDate")
 	private Date shipDate = null;
 
-	@NotNull(message = "Player Phone number has not been provided")
+	@NotNull(message = "Status of the order has not been provided")
 	@JsonProperty("status")
 	private String status = null;
 	
-	@NotNull(message = "Player Password has not been provided")
+	@NotNull(message = "Complete or not has not been provided")
 	@JsonProperty("password")
 	private Boolean complete = false;
 

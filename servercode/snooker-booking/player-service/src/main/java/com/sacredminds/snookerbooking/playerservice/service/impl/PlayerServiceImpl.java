@@ -38,6 +38,9 @@ public class PlayerServiceImpl implements PlayerService {
 		
 		player.setFirstName(request.getFirstName());
 		player.setLastName(request.getLastName());
+		player.setPhone(request.getPhoneNo());
+		player.setEmail(request.getEmail());
+		player.setPassword(request.getPassword());
 		Player playerResponse = playerRepo.save(player);
 		return modelMapper.map(playerResponse, PlayerResponseVO.class);
 	}
@@ -53,8 +56,11 @@ public class PlayerServiceImpl implements PlayerService {
 		List<Player> playerList = new ArrayList<>();
 		playersVO.forEach(playerVO -> {
 			Player player = new Player();
-			player.setFirstName(player.getFirstName());
-			player.setLastName(player.getLastName());
+			player.setFirstName(playerVO.getFirstName());
+			player.setLastName(playerVO.getLastName());
+			player.setPhone(playerVO.getPhoneNo());
+			player.setEmail(playerVO.getEmail());
+			player.setPassword(playerVO.getPassword());
 			playerList.add(player);
 		});
 		return playerRepo.saveAll(playerList);
