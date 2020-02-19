@@ -16,19 +16,8 @@ import com.sacredminds.snookerbooking.datamodel.Parlour;
 import com.sacredminds.snookerbooking.datamodel.ParlourOwner;
 import com.sacredminds.snookerbooking.datamodel.Player;
 import com.sacredminds.snookerbooking.playerservice.exceptionhandling.ResourceNotFoundException;
-import com.sacredminds.snookerbooking.playerservice.repository.BoardRepository;
-import com.sacredminds.snookerbooking.playerservice.repository.BoardTypeRepository;
-import com.sacredminds.snookerbooking.playerservice.repository.CityRepository;
-import com.sacredminds.snookerbooking.playerservice.repository.LocationRepository;
-import com.sacredminds.snookerbooking.playerservice.repository.ParlourOwnerRepository;
-import com.sacredminds.snookerbooking.playerservice.repository.ParlourRepository;
 import com.sacredminds.snookerbooking.playerservice.repository.PlayerRepository;
 import com.sacredminds.snookerbooking.playerservice.service.PlayerService;
-import com.sacredminds.snookerbooking.playerservice.vo.BoardVO;
-import com.sacredminds.snookerbooking.playerservice.vo.LocationRequestVO;
-import com.sacredminds.snookerbooking.playerservice.vo.OwnerVO;
-import com.sacredminds.snookerbooking.playerservice.vo.ParlourRequestVO;
-import com.sacredminds.snookerbooking.playerservice.vo.ParlourResponseVO;
 import com.sacredminds.snookerbooking.playerservice.vo.PlayerRequestVO;
 import com.sacredminds.snookerbooking.playerservice.vo.PlayerResponseVO;
 
@@ -38,66 +27,44 @@ public class PlayerServiceImpl implements PlayerService {
 	@Autowired
 	PlayerRepository playerRepo;
 
-	@Autowired
-	LocationRepository locationRepo;
-
-	@Autowired
-	BoardRepository boardRepo;
-
-	@Autowired
-	ParlourOwnerRepository parlourOwnerRepo;
-
-	@Autowired
-	BoardTypeRepository boardTypeRepo;
-
-	@Autowired
-	CityRepository cityRepo;
-
 	private static final ModelMapper modelMapper = new ModelMapper();
 	
+	/**
+	 *  adding a single player
+	 */
 	@Override
 	public PlayerResponseVO addPlayer(@Valid PlayerRequestVO request) {
-		// TODO Auto-generated method stub
-		
 		Player player = new Player();
 		
 		player.setFirstName(request.getFirstName());
 		player.setLastName(request.getLastName());
-		player.setPhoneNo(request.getPhoneNo());
-		player.setMailId(request.getMailId());
-		player.
-		
 		Player playerResponse = playerRepo.save(player);
-		return modelMapper.map(playerResponse, PlayerResponse.class);
+		return modelMapper.map(playerResponse, PlayerResponseVO.class);
 	}
 
-	private List<Players> addPlayers(@Valid List<PlayerRequestVO> playersVO) {
+	/** 
+	 * Adding multiple players
+	 * 
+	 * @param playersVO
+	 * @return
+	 */
+	private List<Player> addPlayers(@Valid List<PlayerRequestVO> playersVO) {
 
-		List<Players> playerList = new ArrayList<>();
+		List<Player> playerList = new ArrayList<>();
 		playersVO.forEach(playerVO -> {
 			Player player = new Player();
-			player.setFirstName(request.getFirstName());
-			player.setLastName(request.getLastName());
-			player.setPhoneNo(request.getPhoneNo());
-			player.setMailId(request.getMailId());
+			player.setFirstName(player.getFirstName());
+			player.setLastName(player.getLastName());
 			playerList.add(player);
 		});
 		return playerRepo.saveAll(playerList);
 	}
 
+
 	@Override
-	public List<ParlourResponseVO> findParlourByCity(@NotNull @Valid Long cityId) {
-
-		List<ParlourResponseVO> parlourResponseVO = new ArrayList<>();
-		cityRepo.findById(cityId).ifPresentOrElse(city -> {
-			parlourRepo.findByCity(city).forEach(parlour -> {
-				parlourResponseVO.add(modelMapper.map(parlour, ParlourResponseVO.class));
-			});
-
-		}, () -> {
-			throw new ResourceNotFoundException(" No Cities found with provided CityID " + cityId);
-		});
-		return parlourResponseVO;
+	public PlayerResponseVO findByUsrAndPwd(@NotNull @Valid String playerName, @NotNull @Valid String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -21,9 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sacredminds.snookerbooking.datamodel.Parlour;
 import com.sacredminds.snookerbooking.playerservice.service.PlayerService;
-import com.sacredminds.snookerbooking.playerservice.vo.ParlourRequestVO;
-import com.sacredminds.snookerbooking.playerservice.vo.ParlourResponseVO;
 import com.sacredminds.snookerbooking.playerservice.vo.PlayerRequestVO;
 import com.sacredminds.snookerbooking.playerservice.vo.PlayerResponseVO;
 
@@ -62,7 +61,7 @@ public class PlayerServiceController {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				parlourResponseVOs = playerService.findByUsrAndPwd(playerName,password);
+				PlayerResponseVO playerResponseVO = playerService.findByUsrAndPwd(playerName,password);
 				return new ResponseEntity<PlayerResponseVO>(playerResponseVO, HttpStatus.OK);
 			} catch (Exception e) {
 				log.error("Couldn't serialize response for content type application/json", e);
@@ -71,25 +70,5 @@ public class PlayerServiceController {
 		}
 		return new ResponseEntity<PlayerResponseVO>(HttpStatus.NOT_IMPLEMENTED);
 	}
-
-	
-	@GetMapping(value = "/store/order/{orderId}", produces = { "application/json", "application/xml" })
-	public ResponseEntity<PlayerResponseVO> findPlayerByLogin(
-			@NotNull @ApiParam(value = "Id for the order", required = true) @Valid @RequestParam(value = "orderId", required = true) Long orderId) {
-		String accept = request.getHeader("Accept");
-		if (accept != null && accept.contains("application/json")) {
-			try {
-				parlourResponseVOs = playerService.findByUsrAndPwd(playerName,password);
-				return new ResponseEntity<PlayerResponseVO>(playerResponseVO, HttpStatus.OK);
-			} catch (Exception e) {
-				log.error("Couldn't serialize response for content type application/json", e);
-				return new ResponseEntity<PlayerResponseVO>(HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-		}
-		return new ResponseEntity<PlayerResponseVO>(HttpStatus.NOT_IMPLEMENTED);
-	}
-	
-	
-	
 	
 }
