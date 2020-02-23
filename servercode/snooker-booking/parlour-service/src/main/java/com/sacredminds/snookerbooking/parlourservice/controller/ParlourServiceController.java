@@ -75,7 +75,7 @@ public class ParlourServiceController {
 	@ApiOperation(value = "/")
 	@GetMapping(value = "/", produces = { "application/json", "application/xml" })
 	public ResponseEntity<List<ParlourResponseVO>> findParloursByCity(
-			@NotNull @ApiParam(value = "Id of the city which users selects as their location", required = true) @Valid @RequestParam(value = "cityId", required = true) Long cityId) {
+			@NotNull @ApiParam(value = "Id of the city which users selects as their location",type = "path", required = true) @Valid @RequestParam(value = "cityId", required = true) Long cityId) {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {

@@ -52,8 +52,7 @@ public class BoardServiceController {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				return new ResponseEntity<>(boardService.findBoardsByParlourId(parlourId),
-						HttpStatus.OK);
+				return new ResponseEntity<>(boardService.findBoardsByParlourId(parlourId), HttpStatus.OK);
 			} catch (Exception e) {
 				log.error("Couldn't serialize response for content type application/json", e);
 				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -63,14 +62,14 @@ public class BoardServiceController {
 	}
 
 	@ApiOperation(value = "/board-type/{boardTypeId}")
-	@GetMapping(value = "/board-type/{boardTypeId}", produces = { "application/json", "application/xml" })
+	@GetMapping(value = "/board-type/{boardTypeId}", consumes = { "application/json" }, produces = { "application/json",
+			"application/xml" })
 	public ResponseEntity<List<BoardResponseVO>> findBoardByBoardTypeId(
 			@NotNull @ApiParam(value = "unique id of the boardType", required = true) @Valid @PathVariable(value = "boardTypeId", required = true) Long boardTypeId) {
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				return new ResponseEntity<>(boardService.findBoardsByBoardType(boardTypeId),
-						HttpStatus.OK);
+				return new ResponseEntity<>(boardService.findBoardsByBoardType(boardTypeId), HttpStatus.OK);
 			} catch (Exception e) {
 				log.error("Couldn't serialize response for content type application/json", e);
 				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

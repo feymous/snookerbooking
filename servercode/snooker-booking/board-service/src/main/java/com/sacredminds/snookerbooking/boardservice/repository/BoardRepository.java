@@ -19,4 +19,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 	@Query("SELECT b FROM Board b where b.boardType.boardTypeId = ?1")
 	List<Board> findByBoardType(@NotNull @Valid Long boardTypeId);
+	
 }

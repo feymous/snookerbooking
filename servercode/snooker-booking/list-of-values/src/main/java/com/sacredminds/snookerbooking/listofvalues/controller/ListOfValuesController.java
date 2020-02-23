@@ -1,5 +1,7 @@
 package com.sacredminds.snookerbooking.listofvalues.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sacredminds.snookerbooking.datamodel.BoardType;
 import com.sacredminds.snookerbooking.listofvalues.service.ListOfValuesService;
 import com.sacredminds.snookerbooking.listofvalues.vo.Cities;
 
@@ -35,5 +38,14 @@ public class ListOfValuesController {
 			return new ResponseEntity<Cities>(cities, HttpStatus.OK);
 		}
 		return new ResponseEntity<Cities>(HttpStatus.NOT_IMPLEMENTED);
+	}
+	
+	@RequestMapping(value = "/board-types", produces = { "application/json", "application/xml" }, method = RequestMethod.GET)
+	ResponseEntity<List<BoardType>> getboardTypes() {
+		String accept = request.getHeader("Accept");
+		if (accept != null && accept.contains("application/json")) {
+			return new ResponseEntity<List<BoardType>>(listOfValuesService.getBoardTypes(), HttpStatus.OK);
+		}
+		return new ResponseEntity<List<BoardType>>(HttpStatus.NOT_IMPLEMENTED);
 	}
 }

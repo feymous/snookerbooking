@@ -1,27 +1,7 @@
 package com.sacredminds.snookerbooking.datamodel;
 
-import java.util.List;
+public enum SlotStatus {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+	BOOKED, OPEN, CLOSED;
 
-import lombok.Data;
-
-@Entity
-@Data
-public class SlotStatus {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
-	private long slotStatusId;
-
-	private String statusCode;
-	
-	@OneToMany(mappedBy="slotStatus")
-	private List<Slot> slots;
 }

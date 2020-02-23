@@ -6,3 +6,5 @@ servercode/snooker-booking/board-service/.project
 servercode/snooker-booking/board-service/.classpath
 servercode/snooker-booking/board-service/.factorypath
 servercode/snooker-booking/parlour-service/.factorypath
+servercode/snooker-booking/player-service/.classpath
+servercode/snooker-booking/player-service/.project

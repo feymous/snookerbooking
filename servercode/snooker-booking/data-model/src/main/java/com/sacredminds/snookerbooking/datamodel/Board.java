@@ -10,8 +10,6 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
@@ -36,7 +34,7 @@ public class Board {
 
 	private String description;
 	
-	private int pricePerHour;
+	private long pricePerHour;
 
 	// bi-directional many-to-one association to Status
 	@ManyToOne

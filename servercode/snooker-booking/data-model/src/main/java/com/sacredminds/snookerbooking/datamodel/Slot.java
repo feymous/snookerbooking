@@ -1,15 +1,19 @@
 package com.sacredminds.snookerbooking.datamodel;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -36,16 +40,20 @@ public class Slot {
 	@Column
 	private long slotId;
 
-	private int slotTime;
+	@Temporal(TemporalType.DATE)
+	private Date date;
 
-	private Date slotDate;
+	@Column(name="end_time")
+	private Time endTime;
 
+	@Column(name="start_time")
+	private Time startTime;
+	
 	@ManyToOne
 	@JoinColumn
 	private Board board;
 
-	@ManyToOne
-	@JoinColumn(name = "slot_status")
+	@Enumerated(EnumType.STRING)
 	private SlotStatus slotStatus;
 
 	@OneToOne(mappedBy = "slot")
